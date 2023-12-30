@@ -10,53 +10,47 @@ let start=document.querySelector('.start')
 let pause=document.querySelector('.pause')
 let stop=document.querySelector('.stop')
 
-let time;
+let time,Time;
 let[hours,minutes,seconds,milliseconds]=['00','00','00','00'];
 
 let timer=()=>{
     if(time===true){
         milliseconds++;
         if(milliseconds<10){
-            millisec.innerHTML='0'+milliseconds;
-        }else{
-            millisec.innerHTML=milliseconds;
+            milliseconds=`0${milliseconds}`;
         }
         if(milliseconds===99){
             milliseconds=0;
             seconds++;
             if(seconds<10){
-                sec.innerHTML='0'+seconds+' : ';
-            }else{
-                sec.innerHTML=seconds+' : ';
+                seconds=`0${seconds}`;
             }
-            
         }
-
-        if(seconds===59 && milliseconds===99){
+        if(seconds===99 && milliseconds==99){
             seconds=0;
             minutes++;
             if(minutes<10){
-                mins.innerHTML='0'+minutes+' : ';
-            }else{
-                mins.innerHTML=minutes+' : ';
+                minutes=`0${minutes}`;
             }
         }
-
-        if(minutes===59 && seconds===59 && milliseconds===99){
+        if(minutes===99 && seconds===99 && milliseconds==99){
             minutes=0;
             hours++;
             if(hours<10){
-                hrs.innerHTML='0'+hours+' : ';
-            }else{
-                hrs.innerHTML=hours+' : ';
+                hours=`0${hours};`
             }
         }
+
+        millisec.innerHTML=milliseconds;
+        sec.innerHTML=seconds+' : ';
+        mins.innerHTML=minutes+' : ';
+        hrs.innerHTML=hours+' : ';
     }
     if(time===false){
-        clearInterval(timer);
+        clearInterval();
     }
     if(time===null){
-        clearInterval(timer);
+        clearInterval(Time);
         [hours,minutes,seconds,milliseconds]=['00','00','00','00'];
         hrs.innerHTML=hours+' : ';
         mins.innerHTML=minutes+' : ';
@@ -69,7 +63,8 @@ start.addEventListener('click',(e)=>{
     e.stopPropagation();
     console.log('start');
     time=true;
-    setInterval(timer,10);
+    clearInterval(Time);
+    Time=setInterval(timer,10);
 })
 
 pause.addEventListener('click',(e)=>{
@@ -84,19 +79,3 @@ stop.addEventListener('click',(e)=>{
     time=null;
     console.log('stop');
 })
-
-
-
-// let element=document.createElement('div');
-// element.className='pause';
-// element.innerHTML='<i class="fa-solid fa-pause"></i>';
-
-// let element1=document.createElement('div');
-// element.className='stop';
-// element.innerHTML='<i class="fa-solid fa-stop"></i>';
-
-
-// if(time===true){
-//     document.append(element);
-//     document.append(element1);
-// }
