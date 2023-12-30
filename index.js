@@ -13,28 +13,15 @@ let stop=document.querySelector('.stop')
 let time;
 let[hours,minutes,seconds,milliseconds]=['00','00','00','00'];
 
-let element=document.createElement('div');
-element.className='pause';
-element.innerHTML='<i class="fa-solid fa-pause"></i>';
-
-let element1=document.createElement('div');
-element.className='stop';
-element.innerHTML='<i class="fa-solid fa-stop"></i>';
-
-// console.log(element)
-
-// start === false ? document.cont1.append('element','element1') : '';
-
-if(time===true){
-    document.append(element);
-    document.append(element1);
-}
-
 let timer=()=>{
     if(time===true){
         milliseconds++;
-        millisec.innerHTML=milliseconds;
-        if(milliseconds===100){
+        if(milliseconds<10){
+            millisec.innerHTML='0'+milliseconds;
+        }else{
+            millisec.innerHTML=milliseconds;
+        }
+        if(milliseconds===99){
             milliseconds=0;
             seconds++;
             if(seconds<10){
@@ -98,3 +85,18 @@ stop.addEventListener('click',(e)=>{
     console.log('stop');
 })
 
+
+
+// let element=document.createElement('div');
+// element.className='pause';
+// element.innerHTML='<i class="fa-solid fa-pause"></i>';
+
+// let element1=document.createElement('div');
+// element.className='stop';
+// element.innerHTML='<i class="fa-solid fa-stop"></i>';
+
+
+// if(time===true){
+//     document.append(element);
+//     document.append(element1);
+// }

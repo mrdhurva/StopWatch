@@ -21,16 +21,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    word-spacing: 10px;
-    font-size: 40px;
+    font-size: 45px;
+    position: relative;
+    overflow: hidden;
 }
 
-.container .time p{
-    display: flex;
-    gap: 20px;
+.container .time {
+    width: 100%;
+    position: absolute;
+    left: 65px;
 }
-
-
 
 .container1{
     display: flex;
